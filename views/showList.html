@@ -145,12 +145,12 @@
 
 
                         <div ng-if="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)">                 
-                            <input type="text" id="focus" class="w3-input w3-hover-white" style="padding:2px; margin:0px; display:inline-block;" ng-model="x.itemName"  ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName); inputBlurred();"  ng-mousedown="inputMD();">
-                            <input type="text" class="w3-input w3-hover-white w3-small" style=" font-style:italic; padding:2px;  margin:0px;" placeholder="Add notes here..." ng-model="x.itemNotes"   ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName); inputBlurred();" ng-mousedown="inputMD();">
+                            <input type="text" id="focus" class="w3-input w3-hover-white" style="padding:2px; margin:0px; display:inline-block;" ng-model="x.itemName"  ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName,x.important); inputBlurred();"  ng-mousedown="inputMD();">
+                            <input type="text" class="w3-input w3-hover-white w3-small" style=" font-style:italic; padding:2px;  margin:0px;" placeholder="Add notes here..." ng-model="x.itemNotes"   ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName,x.important); inputBlurred();" ng-mousedown="inputMD();">
                             <span ng-show="(!x.important)" class="w3-small w3-text-grey" style="font-style:italic; ">
-                                <button  class="w3-btn w3-light-gray w3-circle w3-text-gray" style="padding:3px; z-index:1; margin:3px;"  ng-mousedown="inputMD(); x.important=1-x.important;"><i class="material-icons" style="font-size:18px">priority_high </i></button>
+                                <button  class="w3-btn w3-light-gray w3-circle w3-text-gray" style="padding:3px; z-index:1; margin:3px;"  ng-mousedown="inputMD(); x.important=1-x.important; saveEdit(x.itemID,x.itemNotes,x.itemName,x.important);"><i class="material-icons" style="font-size:18px">priority_high </i></button>
                                 set as important item</span>
-                                <span ng-show="x.important" class="w3-small w3-text-grey" style="font-style:italic; "><button  class="w3-btn w3-dark-gray w3-circle w3-text-light-gray" style="padding:3px; z-index:1; margin:3px;" ng-mousedown="inputMD(); x.important=1-x.important;" ><i class="material-icons" style="font-size:18px">priority_high</i></button>
+                                <span ng-show="x.important" class="w3-small w3-text-grey" style="font-style:italic; "><button  class="w3-btn w3-dark-gray w3-circle w3-text-light-gray" style="padding:3px; z-index:1; margin:3px;" ng-mousedown="inputMD(); x.important=1-x.important; saveEdit(x.itemID,x.itemNotes,x.itemName,x.important);" ><i class="material-icons" style="font-size:18px">priority_high</i></button>
                                 important item</span>
                         </div>
                             

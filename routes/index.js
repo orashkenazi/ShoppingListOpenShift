@@ -281,10 +281,12 @@ router.post('/editItem', function(req,res){
     "itemID":req.body.itemID,
     "itemNotes":req.body.itemNotes,
     "itemName":req.body.itemName,
-    "important:":req.body.important
+    "important":req.body.important
 
     };
-    console.log("item")
+
+  console.log(req.body.important)
+  console.log(item.important)
 
   
   var sql="UPDATE items SET itemNotes= ?, itemName= ?, important = ? WHERE itemID= ?";
