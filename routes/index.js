@@ -31,6 +31,12 @@ router.get('/showList', function(req, res, next) {
   res.sendFile(path.join(__dirname, '../', 'views', 'showList.html'));
 });
 
+/* GET adminConsole page. */
+router.get('/admin', function(req, res, next) {
+  res.sendFile(path.join(__dirname, '../', 'views', 'admin.html'));
+});
+
+
 
 router.get('/getUserID', function(req,res){
 
