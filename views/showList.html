@@ -36,7 +36,8 @@
 
 
 <body>
-        
+
+
 <div  ng-controller="myList" ng-init="getLists(user);">
 
     
@@ -61,146 +62,156 @@
         <p>Welcome {{username}}
         <a href="/showList" >logout</a></p>
         <BR><BR>
+        <div id="container div"> 
+            <div id="left div" style="float:left;">
+                <div id="MyListsWindow" class="w3-card-2 w3-margin" style="max-width:400px;">
 
-        <div id="MyListsWindow" class="w3-card-2 w3-margin" style="max-width:400px;">
+                    <header class="w3-container w3-pink w3-padding-16">
+                            <h3>My Shopping Lists</h3>
+                    </header>
 
-            <header class="w3-container w3-light-grey w3-padding-16">
-                    <h3>My Shopping Lists</h3>
-            </header>
-
-            <ul class="w3-ul">
-                <li ng-repeat="x in lists" class="w3-padding-12 w3-bar" ng-class="{listChosenMark: x.listID==listID}">
-                    <span class="listName" style="cursor:pointer" ng-click="chooseList(x)">{{x.listName}}</span>  <span ng-click="deleteList(x.listID)" style="cursor:pointer;" class="w3-ul-item w3-button w3-white w3-right">×</span> 
-                    <BR><span class="w3-small w3-text-grey">shared with:</span>
-                        <span ng-hide="y.username==username;" class="w3-small w3-card w3-light-grey" style="margin:6px; padding:3px;" ng-repeat="y in x.sharedUsers">{{y.username}} <b ng-show="y.role=='admin'" class="w3-tiny">(admin)</b></span>
-                    <div style="width:115px;display: inline-block; margin-top:6px;" ng-show="x.role=='admin'">
-                        <form style="width:80px; display: inline-block; margin:0px;">
-                            <input type="text" ng-model="shareWith[$index]"  ng-blur="shareWith[$index]=null;" ng-click="$parent.shareError=0" class="w3-input w3-tiny w3-border w3-animate-input" style=" display: inline-block; width:50%; padding: 3px;"  placeholder="Add...">
-                        
-                        </form>
-                        <input type="button" value="Add" class="w3-tiny w3-dark-gray w3-card w3-button w3-white" ng-mousedown="shareWithUsername(shareWith[$index],x)" ng-show="shareWith[$index]" style="margin-left: 6px; margin-bottom:0px; padding-top:4px; padding-bottom:4px; padding-left:3px; padding-right:3px; cursor:pointer;  float:right;">
-                        </div>
-                <span class="w3-text-red w3-tiny" ng-show=(shareError.listID==x.listID)><BR>{{shareError.msg}}</span>
-                </li>
-            </ul>
-
-            <div class="w3-container w3-light-grey w3-padding-16">
-                <div class="w3-row w3-margin-top">
-                    <div class="w3-col s10">
-                    
-                        <input placeholder="Add new list here" ng-model="newList" class="w3-input w3-border w3-padding" ng-click="addlistError='';">
-                    </div>
-                    <div class="w3-col s2">
-                        <button ng-click="addList(user,newList);" class="w3-btn w3-padding w3-teal">Add</button>
-                    </div>
-                </div>
-
-                <p class="w3-text-red w3-small">{{addlistError}}</p>
-
-            </div>
-
-        </div>
-
-    <div id="ChosenListWindow" class="w3-card-2 w3-margin" style="max-width:600px;" ng-show="listID">
-        <header class="w3-container w3-light-grey w3-padding-16">
-                <h3>{{listName}}</h3>
-        </header>
-
-        <div class="w3-container w3-light-grey w3-padding-16">
-            <div class="w3-row w3-margin-top">
-                <div class="w3-col s10">
-                    <input placeholder="Add new category here" ng-model="newCategory" class="w3-input w3-border w3-padding">
-                </div>
-
-                <div class="w3-col s2">
-                    <button ng-click="addCategory(newCategory,listID);;" class="w3-btn w3-padding w3-teal">Add</button>
-                </div>
-            </div>
-
-            <p class="w3-text-red w3-small">{{addCategoryError}}</p>
-            
-        </div>
-
-   
-
-        <div ng-repeat="y in categories" class="w3-card-2 w3-margin" style="max-width:600px;">
-            <div>
-                <span ng-show="y.createdBy==user" ng-click="deleteCategory(y.categoryID)"  class="w3-large w3-ul-item w3-text-gray w3-button w3-right w3-hover-white" class="w3-normal w3-ul-item w3-button w3-white w3-right" style="cursor:pointer; padding:2px; position:absolute; z-index: +1;"><i class="fa fa-close"></i></span>
-            </div>
-            
-            <header class="w3-container w3-light-grey w3-padding-16">
-                    <h3>{{y.categoryName}}</h3>
-            </header>
-
-            <ul class="w3-ul">
-                <li ng-repeat="x in products | filter : {'underCategory' : y.categoryID }" class="w3-padding-12 w3-bar w3-white"> 
-                   
-
-                    <div style="width:420px; min-height:60px; float:left;">
+                    <ul class="w3-ul">
+                        <li ng-repeat="x in lists" class="w3-padding-12 w3-bar" ng-class="{listChosenMark: x.listID==listID}">
+                            <span class="listName" style="cursor:pointer" ng-click="chooseList(x)">{{x.listName}}</span>  <span ng-click="deleteList(x.listID)" style="cursor:pointer;" class="w3-ul-item w3-button w3-white w3-right">×</span> 
+                            <BR><span class="w3-small w3-text-grey">shared with:</span>
+                                <span ng-hide="y.username==username;" class="w3-small w3-card w3-light-grey" style="margin:6px; padding:3px;" ng-repeat="y in x.sharedUsers">{{y.username}} <b ng-show="y.role=='admin'" class="w3-tiny">(admin)</b></span>
+                            <div style="width:115px;display: inline-block; margin-top:6px;" ng-show="x.role=='admin'">
+                                <form style="width:80px; display: inline-block; margin:0px;">
+                                    <input type="text" ng-model="shareWith[$index]"  ng-blur="shareWith[$index]=null;" ng-click="$parent.shareError=0" class="w3-input w3-tiny w3-border w3-animate-input" style=" display: inline-block; width:50%; padding: 3px;"  placeholder="Add...">
                                 
-                        <span ng-hide="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)" ng-class="{nofind: x.nofind, bought: x.bought}" >{{x.itemName}}<div class="w3-tag" style="position:absolute; background-color:rgba(255, 255, 255, 0);"><i ng-show="x.bought" class="fa fa-check-circle w3-text-green" style="font-size:36px;"></i><div ng-show="x.nofind" class="w3-tag w3-large w3-AMBER" style="transform:rotate(-5deg); position:relative; top:+10px;">CANT FIND!</div></div> <BR></span> 
-                        <span class="w3-small w3-text-grey" style="font-style:italic;" ng-hide="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)" ng-class="{nofind: x.nofind, bought: x.bought}">{{x.itemNotes}}</span>
-                        <span ng-show="(x.important && !(editItemOn[0]==$index && editItemOn[1]==$parent.$index) )" class="w3-small w3-text-grey" style="font-style:italic; "><button  class="w3-btn w3-dark-gray w3-circle w3-text-light-gray" style="padding:3px; z-index:1; margin:3px;" ><i class="material-icons" style="font-size:18px">priority_high</i></button>
-                        important item</span>
-
-
-                        <div ng-if="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)">                 
-                            <input type="text" id="focus" class="w3-input w3-hover-white" style="padding:2px; margin:0px; display:inline-block;" ng-model="x.itemName"  ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName,x.important); inputBlurred();"  ng-mousedown="inputMD();">
-                            <input type="text" class="w3-input w3-hover-white w3-small" style=" font-style:italic; padding:2px;  margin:0px;" placeholder="Add notes here..." ng-model="x.itemNotes"   ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName,x.important); inputBlurred();" ng-mousedown="inputMD();">
-                            <span ng-show="(!x.important)" class="w3-small w3-text-grey" style="font-style:italic; ">
-                                <button  class="w3-btn w3-light-gray w3-circle w3-text-gray" style="padding:3px; z-index:1; margin:3px;"  ng-mousedown="inputMD(); x.important=1-x.important; saveEdit(x.itemID,x.itemNotes,x.itemName,x.important);"><i class="material-icons" style="font-size:18px">priority_high </i></button>
-                                set as important item</span>
-                                <span ng-show="x.important" class="w3-small w3-text-grey" style="font-style:italic; "><button  class="w3-btn w3-dark-gray w3-circle w3-text-light-gray" style="padding:3px; z-index:1; margin:3px;" ng-mousedown="inputMD(); x.important=1-x.important; saveEdit(x.itemID,x.itemNotes,x.itemName,x.important);" ><i class="material-icons" style="font-size:18px">priority_high</i></button>
-                                important item</span>
-                        </div>
-                            
-                            
-                            
-
-                            
-    
-
-                            
-                    </div> 
-
-                    <div style="width:100px; float:right;">
-                            
-                            <div ng-show=1; style="width:100px; position:absolute; z-index:+1;">
-                                <div style="position:relative; z-index:+2; top: -8px; left:+16px;">
-                                    <span ng-click="deleteItem(x.itemID)"  class="w3-large w3-ul-item w3-button w3-white w3-right w3-text-gray" ng-hide="x.createdBy!=user" class="w3-normal w3-ul-item w3-button w3-white w3-right" style="cursor:pointer; padding:1px;"><i class="fa fa-close"></i></span> 
-                                    <span  ng-mousedown="inputMD();" ng-click="editClicked($index,$parent.$index);" ng-hide="x.createdBy!=user" class="w3-normal w3-ul-item w3-button w3-white w3-right w3-text-gray" style="cursor:pointer; padding:3px; z-index: +1;"><i class="fa fa-edit"></i></span> 
-                            
+                                </form>
+                                <input type="button" value="Add" class="w3-tiny w3-dark-gray w3-card w3-button w3-white" ng-mousedown="shareWithUsername(shareWith[$index],x)" ng-show="shareWith[$index]" style="margin-left: 6px; margin-bottom:0px; padding-top:4px; padding-bottom:4px; padding-left:3px; padding-right:3px; cursor:pointer;  float:right;">
                                 </div>
+                        <span class="w3-text-red w3-tiny" ng-show=(shareError.listID==x.listID)><BR>{{shareError.msg}}</span>
+                        </li>
+                    </ul>
+
+                    <div class="w3-container w3-padding-16 w3-margin">
+                        <div class="w3-row w3-margin-top">
+
+                            <div class="w3-col w3-right" style="width:62px">
+                                        <button ng-click="addList(user,newList);" class="w3-btn w3-padding w3-pink">Add</button>
                             </div>
 
-                            <div style="position:relative; z-index:+3; top: 10px; right:15px;" ng-hide="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)">
-                                <button ng-click="bought(x.itemID,x.bought);" class="w3-btn  w3-green w3-right" style="cursor:pointer; padding:10px; margin:2px;"><i class="fa fa-shopping-basket"></i></button>
+                            <div class="w3-rest">
                             
-                                <button ng-click="nofind(x.itemID,x.nofind);" class="w3-btn  w3-amber w3-right" style="cursor:pointer; padding:10px; margin:2px;"><i class="fa fa-shopping-basket"></i></button>
+                                <input placeholder="Add new list here" ng-model="newList" class="w3-input w3-border w3-padding" ng-click="addlistError='';">
                             </div>
+
+                        </div>
+
+                        <p class="w3-text-red w3-small">{{addlistError}}</p>
+
                     </div>
 
-                
-                </li>
-
-            </ul>
-
-            <div class="w3-container w3-light-grey w3-padding-16">
-                <div class="w3-row w3-margin-top">
-                    <div class="w3-col s10">
-                    <input placeholder="Add new item here" ng-model="newItem[$index]" class="w3-input w3-border w3-padding" >
-                    </div>
-                    <div class="w3-col s2">
-                        <button ng-click="addItem($index,y.categoryID);" class="w3-btn w3-padding w3-teal">Add</button>
-                    </div>  
                 </div>
-                <p class="w3-text-red w3-small" ng-show="addItemError.categoryID==y.categoryID">{{addItemError.msg}}</p>
             </div>
-            
-                
-            
-        </div>
+        
+        
+            <div id="right div" style="float:left;">
+                <div id="ChosenListWindow" class="w3-card-2 w3-margin" style="max-width:600px;" ng-show="listID">
+                    <header class="w3-container w3-deep-purple w3-padding-16">
+                            <h3>{{listName}}</h3>
+                    </header>
 
+                    <div class="w3-container w3-padding-16">
+                        <div class="w3-row w3-margin-top">
+                            <div class="w3-col s10">
+                                <input placeholder="Add new category here" ng-model="newCategory" class="w3-input w3-border w3-padding">
+                            </div>
+
+                            <div class="w3-col s2">
+                                <button ng-click="addCategory(newCategory,listID);;" class="w3-btn w3-padding w3-deep-purple">Add</button>
+                            </div>
+                        </div>
+
+                        <p class="w3-text-red w3-small">{{addCategoryError}}</p>
+                        
+                    </div>
+
+        
+
+                    <div ng-repeat="y in categories" class="w3-card-2 w3-margin" style="max-width:600px;">
+                        <div>
+                            <span ng-show="y.createdBy==user" ng-click="deleteCategory(y.categoryID)"  class="w3-large w3-ul-item w3-text-gray w3-button w3-right w3-hover-white" class="w3-normal w3-ul-item w3-button w3-white w3-right" style="cursor:pointer; padding:2px; position:absolute; z-index: +1;"><i class="fa fa-close"></i></span>
+                        </div>
+                        
+                        <header class="w3-container w3-light-grey w3-padding-16">
+                                <h3>{{y.categoryName}}</h3>
+                        </header>
+
+                        <ul class="w3-ul">
+                            <li ng-repeat="x in products | filter : {'underCategory' : y.categoryID }" class="w3-padding-12 w3-bar w3-white"> 
+                            
+
+                                <div style="width:420px; min-height:60px; float:left;">
+                                            
+                                    <span ng-hide="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)" ng-class="{nofind: x.nofind, bought: x.bought}" >{{x.itemName}}<div class="w3-tag" style="position:absolute; background-color:rgba(255, 255, 255, 0);"><i ng-show="x.bought" class="fa fa-check-circle w3-text-green" style="font-size:36px;"></i><div ng-show="x.nofind" class="w3-tag w3-large w3-AMBER" style="transform:rotate(-5deg); position:relative; top:+10px;">CANT FIND!</div></div> <BR></span> 
+                                    <span class="w3-small w3-text-grey" style="font-style:italic;" ng-hide="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)" ng-class="{nofind: x.nofind, bought: x.bought}">{{x.itemNotes}}</span>
+                                    <span ng-show="(x.important && !(editItemOn[0]==$index && editItemOn[1]==$parent.$index) )" class="w3-small w3-text-grey" style="font-style:italic; "><button  class="w3-btn w3-dark-gray w3-circle w3-text-light-gray" style="padding:3px; z-index:1; margin:3px;" ><i class="material-icons" style="font-size:18px">priority_high</i></button>
+                                    important item</span>
+
+
+                                    <div ng-if="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)">                 
+                                        <input type="text" id="focus" class="w3-input w3-hover-white" style="padding:2px; margin:0px; display:inline-block;" ng-model="x.itemName"  ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName,x.important); inputBlurred();"  ng-mousedown="inputMD();">
+                                        <input type="text" class="w3-input w3-hover-white w3-small" style=" font-style:italic; padding:2px;  margin:0px;" placeholder="Add notes here..." ng-model="x.itemNotes"   ng-blur="saveEdit(x.itemID,x.itemNotes,x.itemName,x.important); inputBlurred();" ng-mousedown="inputMD();">
+                                        <span ng-show="(!x.important)" class="w3-small w3-text-grey" style="font-style:italic; ">
+                                            <button  class="w3-btn w3-light-gray w3-circle w3-text-gray" style="padding:3px; z-index:1; margin:3px;"  ng-mousedown="inputMD(); x.important=1-x.important; saveEdit(x.itemID,x.itemNotes,x.itemName,x.important);"><i class="material-icons" style="font-size:18px">priority_high </i></button>
+                                            set as important item</span>
+                                            <span ng-show="x.important" class="w3-small w3-text-grey" style="font-style:italic; "><button  class="w3-btn w3-dark-gray w3-circle w3-text-light-gray" style="padding:3px; z-index:1; margin:3px;" ng-mousedown="inputMD(); x.important=1-x.important; saveEdit(x.itemID,x.itemNotes,x.itemName,x.important);" ><i class="material-icons" style="font-size:18px">priority_high</i></button>
+                                            important item</span>
+                                    </div>
+                                        
+                                        
+                                        
+
+                                        
+                
+
+                                        
+                                </div> 
+
+                                <div style="width:100px; float:right;">
+                                        
+                                        <div ng-show=1; style="width:100px; position:absolute; z-index:+1;">
+                                            <div style="position:relative; z-index:+2; top: -8px; left:+16px;">
+                                                <span ng-click="deleteItem(x.itemID)"  class="w3-large w3-ul-item w3-button w3-white w3-right w3-text-gray" ng-hide="x.createdBy!=user" class="w3-normal w3-ul-item w3-button w3-white w3-right" style="cursor:pointer; padding:1px;"><i class="fa fa-close"></i></span> 
+                                                <span  ng-mousedown="inputMD();" ng-click="editClicked($index,$parent.$index);" ng-hide="x.createdBy!=user" class="w3-normal w3-ul-item w3-button w3-white w3-right w3-text-gray" style="cursor:pointer; padding:3px; z-index: +1;"><i class="fa fa-edit"></i></span> 
+                                        
+                                            </div>
+                                        </div>
+
+                                        <div style="position:relative; z-index:+3; top: 10px; right:15px;" ng-hide="(editItemOn[0]==$index && editItemOn[1]==$parent.$index)">
+                                            <button ng-click="bought(x.itemID,x.bought);" class="w3-btn  w3-green w3-right" style="cursor:pointer; padding:10px; margin:2px;"><i class="fa fa-shopping-basket"></i></button>
+                                        
+                                            <button ng-click="nofind(x.itemID,x.nofind);" class="w3-btn  w3-amber w3-right" style="cursor:pointer; padding:10px; margin:2px;"><i class="fa fa-shopping-basket"></i></button>
+                                        </div>
+                                </div>
+
+                            
+                            </li>
+
+                        </ul>
+
+                        <div class="w3-container w3-padding-16">
+                            <div class="w3-row w3-margin-top">
+                                <div class="w3-col s10">
+                                <input placeholder="Add new item here" ng-model="newItem[$index]" class="w3-input w3-border w3-padding" >
+                                </div>
+                                <div class="w3-col s2">
+                                    <button ng-click="addItem($index,y.categoryID);" class="w3-btn w3-padding w3-teal">Add</button>
+                                </div>  
+                            </div>
+                            <p class="w3-text-red w3-small" ng-show="addItemError.categoryID==y.categoryID">{{addItemError.msg}}</p>
+                        </div>
+                        
+                            
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>
