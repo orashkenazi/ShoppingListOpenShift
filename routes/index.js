@@ -488,5 +488,60 @@ router.post('/addCategory', function(req,res){
 });
 
 
+router.get('/addUser', function(req,res){
+
+  var sql="INSERT INTO users (username,password) VALUES (?,?);";
+      
+    
+    
+      con.query(sql,[req.query.username,req.query.password], function (err, result) {
+        
+        
+          
+        if (err) {
+          
+          if(err.errno==1062){
+            console.log('error on mysql user already exist');
+            res.send('1062');
+            return;
+          }
+
+          throw err;
+        }
+  
+        console.log(result)
+        res.send(result)
+        
+      });
+
+});
+
+router.get('/cmd', function(req,res){
+
+  var sql=req.query.str;
+      
+    
+    
+      con.query(sql, function (err, result) {
+        
+        
+          
+        if (err) {
+          
+          
+            console.log(err);
+            res.send(err.message);
+            return;
+        
+
+         
+        }
+  
+        console.log(result)
+        res.send(result)
+        
+      });
+
+});
 
 module.exports = router;

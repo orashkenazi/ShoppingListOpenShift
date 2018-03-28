@@ -1,0 +1,73 @@
+
+
+<html ng-app="ShoppingListAdmin">
+    <head>
+        <title>ShoppingList - Admin control, totaly unsecured</title>
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+       
+
+
+    </head>
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <Script src="javascripts/admin.js"></script> 
+
+
+    <body>
+           
+
+        <div ng-controller="adminConsole">
+            
+          
+            <div id="addUser" class="w3-card w3-margin" style="width:300px;">
+                <header class="w3-container w3-teal">
+                   <h3>Add User</h3> 
+                </header>
+
+                <form ng-submit="addUser();" class="w3-container" >
+                    <p>
+                    <label>Username:</label>
+                    <input type="text" ng-model="username" class="w3-input"></p>
+                    <p>
+                    <label>Password:</label>
+                    <input type="text" ng-model="password" class="w3-input" ></p>
+                    
+                        <span ng-bind="addUserError" class="w3-small w3-text-red"></span>
+                        <input type="submit" value="Add" class="w3-btn w3-teal w3-right">
+                       <BR><BR>
+                </form>
+
+            </div>
+
+            <div id="terminal" class="w3-card w3-margin" style="width:600px;">
+                    <header class="w3-container w3-brown">
+                       <h3>CRAZY DANGEROUS TERMINAL TO MYSQL</h3> 
+                    </header>
+    
+                    <div class="w3-container">
+                        <p>
+                        <label>Write:</label></p>
+                        <textarea rows=5 cols=60 ng-model="cmdbox" >
+                        </textarea>
+                        <BR>
+                        <input type="button" value="send" ng-click="cmdsend();" class="w3-btn w3-black w3-right">
+                        <BR>
+                        
+                        <p><label>Resoponse:</label></p>
+                        <span ng-bind="cmdresponse"></span>
+                            
+                    </div>
+
+                        
+    
+                </div>
+
+
+        </div>
+
+
+        
+
+    </body>
+</html>
