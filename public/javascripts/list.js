@@ -471,8 +471,13 @@ app.controller("myList", function($scope, $http, $timeout) {
             } ,
             headers: {'Content-Type': 'application/json'}
             
-        });
-        $scope.getItems($scope.listID);
+        }).then(function(response){ 
+            if(response.data.changedRows!=0)
+            { $scope.getItems($scope.listID);}
+              
+             
+              
+          });
 
     }
 
@@ -491,8 +496,14 @@ app.controller("myList", function($scope, $http, $timeout) {
             } ,
             headers: {'Content-Type': 'application/json'}
             
-        });
-        $scope.getItems($scope.listID);
+        }).then(function(response){ 
+           if(response.data.changedRows!=0)
+           { $scope.getItems($scope.listID);}
+             
+            
+             
+         });
+       
 
     }
 
