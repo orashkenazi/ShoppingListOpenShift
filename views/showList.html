@@ -74,7 +74,7 @@
                         <li ng-repeat="x in lists" class="w3-padding-12 w3-bar" ng-class="{listChosenMark: x.listID==listID}">
                             <span class="listName" style="cursor:pointer" ng-click="chooseList(x)">{{x.listName}}</span>  <span ng-click="deleteList(x.listID)" style="cursor:pointer;" class="w3-ul-item w3-button w3-white w3-right">×</span> 
                             <BR><span class="w3-small w3-text-grey">shared with:</span>
-                                <span ng-hide="y.username==username;" class="w3-small w3-card w3-light-grey" style="margin:6px; padding:3px;" ng-repeat="y in x.sharedUsers">{{y.username}} <b ng-show="y.role=='admin'" class="w3-tiny">(admin)</b></span>
+                                <span ng-hide="y.username==username" class="w3-small w3-card w3-light-grey" style="margin:6px; padding:3px;" ng-repeat="y in x.sharedUsers">{{y.username}} <b ng-show="y.role=='admin'" class="w3-tiny">(admin)</b></span>
                             <div style="width:115px;display: inline-block; margin-top:6px;" ng-show="x.role=='admin'">
                                 <form style="width:80px; display: inline-block; margin:0px;">
                                     <input type="text" ng-model="shareWith[$index]"  ng-blur="shareWith[$index]=null;" ng-click="$parent.shareError=0" class="w3-input w3-tiny w3-border w3-animate-input" style=" display: inline-block; width:50%; padding: 3px;"  placeholder="Add...">

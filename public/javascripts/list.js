@@ -124,6 +124,7 @@ app.controller("myList", function($scope, $http, $timeout) {
 
                 $scope.user = response.data[0].userID;
                 $scope.getLists($scope.user);
+                $scope.username=response.data[0].username;
                }
                 
             });
@@ -200,7 +201,7 @@ app.controller("myList", function($scope, $http, $timeout) {
         }
 
 
-        if(username==$scope.username){
+        if(username.toUpperCase()==$scope.username.toUpperCase()){
             
             $scope.shareError = {"msg":"You are the owner of this list...", "listID":list.listID};
             

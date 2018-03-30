@@ -40,7 +40,7 @@ router.get('/admin', function(req, res, next) {
 
 router.get('/getUserID', function(req,res){
 
-  con.query("SELECT userID FROM users WHERE (username='"+req.query.username+"' AND password='"+req.query.password+"');", function (err, result, fields) {
+  con.query("SELECT userID, username FROM users WHERE (username='"+req.query.username+"' AND password='"+req.query.password+"');", function (err, result, fields) {
     if (err) throw err;
    
     
